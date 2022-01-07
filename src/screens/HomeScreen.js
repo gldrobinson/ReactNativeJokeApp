@@ -6,13 +6,22 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => console.log("random pressed")}
+        >
           <Text style={styles.buttonText}>RANDOM JOKE</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("Custom")}
+        >
           <Text style={styles.buttonText}>TEXT INPUT</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("JokesList")}
+        >
           <Text style={styles.buttonText}>NEVER ENDING JOKES</Text>
         </TouchableOpacity>
       </View>
