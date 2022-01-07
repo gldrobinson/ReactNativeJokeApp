@@ -3,12 +3,13 @@ import { StyleSheet, Text, View, TouchableOpacity, Alert } from "react-native";
 import { getRandomJoke } from "../api/apiRequest";
 import { useSelector, useDispatch } from "react-redux";
 import { setRandomJoke } from "../state/actions";
+import showJokeAlert from "../components/alert";
 
 const HomeScreen = ({ navigation }) => {
-  const { randomJoke } = useSelector((state) => state.randomJokeReducer);
+  const { randomJoke } = useSelector((state) => state.random);
   const dispatch = useDispatch();
 
-  console.log(randomJoke);
+  // console.log(randomJoke);
 
   const getJoke = () => {
     getRandomJoke()
@@ -16,17 +17,18 @@ const HomeScreen = ({ navigation }) => {
         dispatch(setRandomJoke(joke));
       })
       .then(() => {
-        showJokeAlert(randomJoke);
+        console.log(randomJoke);
+        showJokeAlert("Random Joke", randomJoke);
       })
       .catch((err) => {
         const errorMessage = "Oops, something went wrong. Please try again!";
-        showJokeAlert(errorMessage);
+        showJokeAlert("Error", errorMessage);
       });
   };
 
-  const showJokeAlert = (joke) => {
-    Alert.alert("Random Joke!", joke, [{ text: "OK" }]);
-  };
+  // const showJokeAlert = (joke) => {
+  //   Alert.alert("Random Joke!", joke, [{ text: "OK" }]);
+  // };
   return (
     <View style={styles.container}>
       <View style={styles.buttonContainer}>
