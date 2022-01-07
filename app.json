@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "JokeApp",
+    "slug": "JokeApp",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "JokeApp"
+}
