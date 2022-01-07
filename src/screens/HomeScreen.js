@@ -19,7 +19,8 @@ const HomeScreen = ({ navigation }) => {
         showJokeAlert(randomJoke);
       })
       .catch((err) => {
-        console.dir(err);
+        const errorMessage = "Oops, something went wrong. Please try again!";
+        showJokeAlert(errorMessage);
       });
   };
 
