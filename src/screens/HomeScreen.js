@@ -1,15 +1,35 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import { withSafeAreaInsets } from "react-native-safe-area-context";
+import { StyleSheet, Text, View, TouchableOpacity, Alert } from "react-native";
+import { getRandomJoke } from "../api/apiRequest";
+import { useSelector, useDispatch } from "react-redux";
+import { setRandomJoke } from "../state/actions";
 
 const HomeScreen = ({ navigation }) => {
+  const { randomJoke } = useSelector((state) => state.randomJokeReducer);
+  const dispatch = useDispatch();
+
+  console.log(randomJoke);
+
+  const getJoke = () => {
+    getRandomJoke()
+      .then((joke) => {
+        dispatch(setRandomJoke(joke));
+      })
+      .then(() => {
+        showJokeAlert(randomJoke);
+      })
+      .catch((err) => {
+        console.dir(err);
+      });
+  };
+
+  const showJokeAlert = (joke) => {
+    Alert.alert("Random Joke!", joke, [{ text: "OK" }]);
+  };
   return (
     <View style={styles.container}>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => console.log("random pressed")}
-        >
+        <TouchableOpacity style={styles.button} onPress={() => getJoke()}>
           <Text style={styles.buttonText}>RANDOM JOKE</Text>
         </TouchableOpacity>
         <TouchableOpacity
