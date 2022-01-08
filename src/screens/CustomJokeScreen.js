@@ -91,12 +91,13 @@ const styles = StyleSheet.create({
   },
   textInputContainer: {
     flex: 1,
-    paddingTop: 100,
-    margin: 50,
+    paddingTop: 20,
+    margin: 20,
     justifyContent: "flex-start",
   },
   textHint: {
     margin: 12,
+    fontSize: 16,
   },
   input: {
     height: 40,
