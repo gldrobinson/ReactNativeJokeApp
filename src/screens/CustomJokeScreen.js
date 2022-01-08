@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -16,19 +16,27 @@ const CustomJokeScreen = () => {
     (state) => state.custom
   );
 
+  console.log(customJoke);
+  // set initial joke when firstName / lastName changes
+  useEffect(() => {
+    requestCustomJoke();
+  }, [firstName, lastName]);
+
   const dispatch = useDispatch();
 
   const onSearch = () => {
+    showJokeAlert(customJoke);
+    requestCustomJoke();
+  };
+
+  const requestCustomJoke = () => {
     getCustomJoke(firstName, lastName)
       .then((joke) => {
         dispatch(setCustomJoke(joke));
       })
-      .then(() => {
-        showJokeAlert("Custom Joke", customJoke);
-      })
       .catch((err) => {
         const errorMessage = "Oops, something went wrong. Please try again!";
-        showJokeAlert("Error", errorMessage);
+        dispatch(setCustomJoke(errorMessage));
       });
   };
 
