@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Alert } from "react-native";
 import { getRandomJoke } from "../api/apiRequest";
 import { useSelector, useDispatch } from "react-redux";
@@ -9,30 +9,33 @@ const HomeScreen = ({ navigation }) => {
   const { randomJoke } = useSelector((state) => state.random);
   const dispatch = useDispatch();
 
-  // console.log(randomJoke);
+  // set initial joke when page first renders.
+  useEffect(() => {
+    requestJoke();
+  }, []);
 
-  const getJoke = () => {
+  console.log(randomJoke);
+
+  const showJoke = () => {
+    showJokeAlert(randomJoke);
+    requestJoke();
+  };
+
+  const requestJoke = () => {
     getRandomJoke()
       .then((joke) => {
         dispatch(setRandomJoke(joke));
       })
-      .then(() => {
-        console.log(randomJoke);
-        showJokeAlert("Random Joke", randomJoke);
-      })
       .catch((err) => {
         const errorMessage = "Oops, something went wrong. Please try again!";
-        showJokeAlert("Error", errorMessage);
+        dispatch(setRandomJoke(errorMessage));
       });
   };
 
-  // const showJokeAlert = (joke) => {
-  //   Alert.alert("Random Joke!", joke, [{ text: "OK" }]);
-  // };
   return (
     <View style={styles.container}>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={() => getJoke()}>
+        <TouchableOpacity style={styles.button} onPress={() => showJoke()}>
           <Text style={styles.buttonText}>RANDOM JOKE</Text>
         </TouchableOpacity>
         <TouchableOpacity
