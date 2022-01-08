@@ -22,6 +22,6 @@ export const getMultipleJokes = () => {
   return axios
     .get("http://api.icndb.com/jokes/random/20?exclude=explicit")
     .then((res) => {
-      console.log(res.data.value);
+      return res.data.value;
     });
 };
