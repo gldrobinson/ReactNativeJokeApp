@@ -2,6 +2,7 @@ export const SET_RANDOM_JOKE = "SET_RANDOM_JOKE";
 export const SET_FIRST_NAME = "SET_FIRST_NAME";
 export const SET_LAST_NAME = "SET_LAST_NAME";
 export const SET_CUSTOM_JOKE = "SET_CUSTOM_JOKE";
+export const SET_MULTIPLE_JOKES = "SET_MULTIPLE_JOKES";
 
 export const setRandomJoke = (joke) => (dispatch) => {
   dispatch({
@@ -28,5 +29,12 @@ export const setLastName = (lastName) => (dispatch) => {
   dispatch({
     type: SET_LAST_NAME,
     payload: lastName,
+  });
+};
+
+export const setMultipleJokes = (multipleJokes) => (dispatch) => {
+  dispatch({
+    type: SET_MULTIPLE_JOKES,
+    payload: multipleJokes,
   });
 };
