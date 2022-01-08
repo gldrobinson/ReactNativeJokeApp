@@ -16,17 +16,34 @@ const CustomJokeScreen = () => {
     (state) => state.custom
   );
 
+  const dispatch = useDispatch();
+
   console.log(customJoke);
+  // resets firstName and lastName state when page rerenders.
+  useEffect(() => {
+    dispatch(setFirstName(""));
+    dispatch(setLastName(""));
+  }, []);
+
   // set initial joke when firstName / lastName changes
   useEffect(() => {
+    firstName;
     requestCustomJoke();
   }, [firstName, lastName]);
 
-  const dispatch = useDispatch();
-
   const onSearch = () => {
-    showJokeAlert(customJoke);
-    requestCustomJoke();
+    let alertMessage;
+    if (!firstName && !lastName) {
+      alertMessage = "Please enter first and last name.";
+    } else if (!firstName) {
+      alertMessage = "Please enter first name.";
+    } else if (!lastName) {
+      alertMessage = "Please enter last name.";
+    } else {
+      alertMessage = customJoke;
+      requestCustomJoke();
+    }
+    showJokeAlert(alertMessage);
   };
 
   const requestCustomJoke = () => {
