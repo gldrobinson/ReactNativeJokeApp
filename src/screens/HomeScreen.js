@@ -58,21 +58,21 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
+    backgroundColor: "#F8F5F1",
   },
   buttonContainer: {
     flex: 1,
     flexDirection: "column",
-    paddingTop: 100,
+    paddingTop: 60,
     alignItems: "center",
     margin: 50,
   },
   button: {
     padding: 20,
-    backgroundColor: "#4682b4",
+    backgroundColor: "#5AA897",
     width: 250,
     alignItems: "center",
     justifyContent: "center",
-    borderWidth: 2,
     borderRadius: 10,
     margin: 10,
     color: "white",
@@ -81,6 +81,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "white",
     fontWeight: "bold",
+    fontSize: 20,
   },
 });
 
