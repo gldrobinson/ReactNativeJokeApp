@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Alert } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { getRandomJoke } from "../api/apiRequest";
 import { useSelector, useDispatch } from "react-redux";
 import { setRandomJoke } from "../state/actions";
