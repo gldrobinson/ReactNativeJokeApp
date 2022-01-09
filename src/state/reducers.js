@@ -48,15 +48,11 @@ export const customJokeReducer = (state = initialState, action) => {
 
 export const multipleJokesReducer = (state = initialState, action) => {
   switch (action.type) {
-    // case SET_MULTIPLE_JOKES:
-    //   action.payload.forEach((joke) => {
-    //     state.multipleJokes.push(joke);
-    //   });
-    //   return { ...state };
-    // default:
-    //   return state;
     case SET_MULTIPLE_JOKES:
-      return { ...state, multipleJokes: action.payload };
+      action.payload.forEach((joke) => {
+        state.multipleJokes.push(joke);
+      });
+      return { ...state };
     default:
       return state;
   }
