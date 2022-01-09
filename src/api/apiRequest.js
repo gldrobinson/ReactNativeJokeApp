@@ -20,7 +20,7 @@ export const getCustomJoke = (firstName, lastName) => {
 
 export const getMultipleJokes = () => {
   return axios
-    .get("http://api.icndb.com/jokes/random/20?exclude=explicit")
+    .get("http://api.icndb.com/jokes/random/10?exclude=explicit")
     .then((res) => {
       return res.data.value;
     });
