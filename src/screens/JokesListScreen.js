@@ -8,13 +8,15 @@ import {
 } from "react-native";
 import { getMultipleJokes } from "../api/apiRequest";
 import { useSelector, useDispatch } from "react-redux";
-import { setMultipleJokes } from "../state/actions";
+import { setMultipleJokes, resetMultipleJokes } from "../state/actions";
 
 const JokesListScreen = () => {
   const { multipleJokes } = useSelector((state) => state.multiple);
   const dispatch = useDispatch();
 
+  // resets multipleJokes to empty array and sets multipleJokes on page render.
   useEffect(() => {
+    dispatch(resetMultipleJokes());
     requestMultipleJokes();
   }, []);
 
@@ -37,6 +39,16 @@ const JokesListScreen = () => {
     );
   };
 
+  const renderEmpty = () => {
+    return (
+      <View style={styles.textContainer}>
+        <Text style={styles.listText}>
+          Oops, something went wrong. Please try again!
+        </Text>
+      </View>
+    );
+  };
+
   return (
     <View style={styles.container}>
       <FlatList
@@ -45,12 +57,12 @@ const JokesListScreen = () => {
         renderItem={({ item }) => (
           <View style={styles.textContainer}>
             <Text style={styles.listText}>{item.joke}</Text>
-            {/* <View style={styles.divisor}></View> */}
           </View>
         )}
-        onEndReachedThreshold={0.5}
+        onEndReachedThreshold={0.25}
         onEndReached={requestMultipleJokes}
         ListFooterComponent={renderLoading}
+        ListEmptyComponent={renderEmpty}
         keyExtractor={(item, index) => index.toString()}
       />
     </View>
