@@ -67,7 +67,9 @@ const CustomJokeScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text>Custom Joke Page</Text>
+      <Text style={styles.intoText}>
+        Enter first name and last name for your custom joke!
+      </Text>
       <View style={styles.textInputContainer}>
         <View style={styles.textInput}>
           <Text style={styles.textHint}>Enter first name: </Text>
@@ -88,11 +90,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
+    backgroundColor: "#F8F5F1",
+  },
+  intoText: {
+    padding: 20,
+    fontSize: 18,
   },
   textInputContainer: {
     flex: 1,
-    paddingTop: 20,
-    margin: 20,
+    margin: 10,
     justifyContent: "flex-start",
   },
   textHint: {
@@ -100,18 +106,18 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   input: {
-    height: 40,
+    height: 50,
     margin: 12,
     borderWidth: 1,
     padding: 10,
+    borderRadius: 5,
   },
   button: {
     padding: 10,
-    backgroundColor: "#4682b4",
+    backgroundColor: "#5AA897",
     width: 100,
     alignItems: "center",
     justifyContent: "center",
-    borderWidth: 2,
     borderRadius: 10,
     margin: 10,
     color: "white",
