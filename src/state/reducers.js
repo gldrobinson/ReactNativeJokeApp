@@ -3,6 +3,7 @@ import {
   SET_FIRST_NAME,
   SET_LAST_NAME,
   SET_CUSTOM_JOKE,
+  SET_MULTIPLE_JOKES,
 } from "./actions";
 
 const randomJokeState = {
@@ -20,6 +21,7 @@ const initialState = {
   customJoke: "",
   firstName: "",
   lastName: "",
+  multipleJokes: [],
 };
 
 export const randomJokeReducer = (state = initialState, action) => {
@@ -43,3 +45,17 @@ export const customJokeReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export const multipleJokesReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case SET_MULTIPLE_JOKES:
+      action.payload.forEach((joke) => {
+        state.multipleJokes.push(joke);
+      });
+      return { ...state };
+    default:
+      return state;
+  }
+};
+
+initialState.multipleJokes;

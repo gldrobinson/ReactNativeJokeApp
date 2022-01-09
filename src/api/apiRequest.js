@@ -17,3 +17,11 @@ export const getCustomJoke = (firstName, lastName) => {
       return res.data.value.joke;
     });
 };
+
+export const getMultipleJokes = () => {
+  return axios
+    .get("http://api.icndb.com/jokes/random/20?exclude=explicit")
+    .then((res) => {
+      return res.data.value;
+    });
+};
