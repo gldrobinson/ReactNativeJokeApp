@@ -15,9 +15,42 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="Custom" component={CustomJokeScreen} />
-          <Stack.Screen name="JokesList" component={JokesListScreen} />
+          <Stack.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{
+              title: "Jokes App",
+              headerStyle: { backgroundColor: "#45526C" },
+              headerTintColor: "white",
+              headerTitleStyle: {
+                fontWeight: "bold",
+              },
+            }}
+          />
+          <Stack.Screen
+            name="Custom"
+            component={CustomJokeScreen}
+            options={{
+              title: "Custom Joke",
+              headerStyle: { backgroundColor: "#45526C" },
+              headerTintColor: "white",
+              headerTitleStyle: {
+                fontWeight: "bold",
+              },
+            }}
+          />
+          <Stack.Screen
+            name="JokesList"
+            component={JokesListScreen}
+            options={{
+              title: "Never Ending Jokes",
+              headerStyle: { backgroundColor: "#45526C" },
+              headerTintColor: "white",
+              headerTitleStyle: {
+                fontWeight: "bold",
+              },
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
