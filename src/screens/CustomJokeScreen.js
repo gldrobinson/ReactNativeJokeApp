@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   StyleSheet,
   Text,
   View,
   TextInput,
   TouchableOpacity,
+  KeyboardAvoidingView,
 } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { getCustomJoke } from "../api/apiRequest";
@@ -126,6 +127,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "white",
     fontWeight: "bold",
+    fontSize: 16,
   },
 });
 
