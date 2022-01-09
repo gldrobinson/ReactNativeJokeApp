@@ -31,7 +31,7 @@ const JokesListScreen = () => {
   const renderLoading = () => {
     return (
       <View style={styles.loading}>
-        <ActivityIndicator size="large" color="blue" />
+        <ActivityIndicator size="large" color="#5AA897" />
         <Text style={styles.textLoading}>Fetching more jokes!</Text>
       </View>
     );
@@ -39,12 +39,14 @@ const JokesListScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text>Jokes list Page</Text>
       <FlatList
         style={styles.flatList}
         data={multipleJokes}
         renderItem={({ item }) => (
-          <Text style={styles.listText}>{item.id + "-->" + item.joke}</Text>
+          <View style={styles.textContainer}>
+            <Text style={styles.listText}>{item.joke}</Text>
+            {/* <View style={styles.divisor}></View> */}
+          </View>
         )}
         onEndReachedThreshold={0.5}
         onEndReached={requestMultipleJokes}
@@ -58,6 +60,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
+    backgroundColor: "#F8F5F1",
   },
   flatList: {
     padding: 10,
@@ -65,6 +68,12 @@ const styles = StyleSheet.create({
   listText: {
     fontSize: 18,
     padding: 10,
+  },
+  textContainer: {
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: "#45526C",
+    margin: 5,
   },
   textLoading: {
     textAlign: "center",
