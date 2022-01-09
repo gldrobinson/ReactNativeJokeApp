@@ -4,6 +4,7 @@ import {
   SET_LAST_NAME,
   SET_CUSTOM_JOKE,
   SET_MULTIPLE_JOKES,
+  RESET_MULTIPLE_JOKES,
 } from "./actions";
 
 const randomJokeState = {
@@ -53,6 +54,8 @@ export const multipleJokesReducer = (state = initialState, action) => {
         state.multipleJokes.push(joke);
       });
       return { ...state };
+    case RESET_MULTIPLE_JOKES:
+      return { ...state, multipleJokes: [] };
     default:
       return state;
   }
