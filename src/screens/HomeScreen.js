@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flex: 1,
     flexDirection: "column",
-    paddingTop: 60,
+    paddingTop: 40,
     alignItems: "center",
     margin: 50,
   },
