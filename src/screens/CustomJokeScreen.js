@@ -5,7 +5,6 @@ import {
   View,
   TextInput,
   TouchableOpacity,
-  KeyboardAvoidingView,
 } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { getCustomJoke } from "../api/apiRequest";
@@ -16,10 +15,8 @@ const CustomJokeScreen = () => {
   const { customJoke, firstName, lastName } = useSelector(
     (state) => state.custom
   );
-
   const dispatch = useDispatch();
 
-  console.log(customJoke);
   // resets firstName and lastName state when page rerenders.
   useEffect(() => {
     dispatch(setFirstName(""));

@@ -14,8 +14,6 @@ const HomeScreen = ({ navigation }) => {
     requestJoke();
   }, []);
 
-  console.log(randomJoke);
-
   const showJoke = () => {
     showJokeAlert(randomJoke);
     requestJoke();
