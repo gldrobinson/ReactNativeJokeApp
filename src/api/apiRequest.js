@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const getRandomJoke = () => {
   return axios
-    .get("http://api.icndb.com/jokes/random?exlude=explicit")
+    .get("http://api.icndb.com/jokes/random?exclude=explicit")
     .then((res) => {
       return res.data.value.joke;
     });
@@ -11,7 +11,7 @@ export const getRandomJoke = () => {
 export const getCustomJoke = (firstName, lastName) => {
   return axios
     .get(
-      `http://api.icndb.com/jokes/random?exlude=explicit&firstName=${firstName}&lastName=${lastName}`
+      `http://api.icndb.com/jokes/random?exclude=explicit&firstName=${firstName}&lastName=${lastName}`
     )
     .then((res) => {
       return res.data.value.joke;
